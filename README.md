@@ -1,30 +1,34 @@
-# QC Automatización con Python  
-**Análisis Espectrofotométrico + Cp/Cpk tipo Minitab**
+# Sistema de Análisis para Espectrofotometría 🧪📊
 
-> **Ingeniero Químico** automatizando control de calidad:  
-> De **4 horas manuales** → **menos de 5 minutos automáticos**
+Sistema integrado para procesamiento de datos de espectrofotometría y análisis estadístico de calidad.
 
----
+## 📋 Proyectos Incluidos
 
-## ¿Qué hace este proyecto?
+### 🔬 LaboratorioVirtual_Concentraciones.py
+**¿Qué hace?**  
+Calcula concentraciones mediante espectrofotometría usando regresión lineal.
 
-| Módulo | Funcionalidad clave |
-|--------|---------------------|
-| `Calculadora_de_concentracionesV2.py` | • Curva de calibración (regresión lineal)<br>• Convierte absorbancias → concentraciones<br>• Estadísticas por lote (promedio, CV, aprobación) |
-| `Analizador_EstadisticoV2.py` | • **Cp/Cpk con desviación pooled** (exacto como Minitab)<br>• 6 gráficos profesionales<br>• PPM fuera de especificación |
+**Proceso:**
+1. Lee archivo Excel `datos_laboratorio.xlsx` (hoja "calibración")
+2. Realiza regresión lineal con datos de absorbancia y concentración
+3. Genera ecuación de la recta (y = mx + b)
+4. Calcula concentraciones de muestras en segunda hoja (los datos estan dispuestos en subgrupos ordenados en filas)
+5. Exporta resultados a `matriz_concentraciones.xlsx`
 
-**Límites de especificación**: `0.08 M – 0.12 M`  
-**R² promedio**: `> 0.99`  
-**Salidas generadas**:  
-- `matriz_concentraciones.xlsx`  
-- `reporte_estadistico_avanzado.xlsx`  
-- 3 gráficos tipo Minitab
+### 📈 AnalizadorEstadistico_Procesos.py
+**¿Qué hace?**  
+Realiza análisis estadístico de capacidad de procesos para control de calidad.
 
----
+**Métricas calculadas:**
+- Cp, Cpk (Capacidad del proceso)
+- Pp, Ppk (Desempeño del proceso)
+- Gráficas de control y tendencias
+- Análisis de estabilidad del proceso
 
-## Cómo ejecutarlo
-
+## 🔄 Flujo de Trabajo
 ```bash
-pip install pandas numpy matplotlib scipy openpyxl
-python Calculadora_de_concentracionesV2.py
-python Analizador_EstadisticoV2.py
+# 1. Calcular concentraciones
+python LaboratorioVirtual_Concentraciones.py
+
+# 2. Análisis estadístico
+python AnalizadorEstadistico_Procesos.py
